@@ -1,3 +1,4 @@
+import { type } from '@testing-library/user-event/dist/type'
 import React from 'react'
 import {Card, PokemonName, PokemonType, EvolveButton} from './styles'
 
@@ -5,16 +6,21 @@ import {Card, PokemonName, PokemonType, EvolveButton} from './styles'
 
 const PokemonCard = (props) => {
 
+  const {setPokemons, pokemons, Pikachu} = props
+
+  const { name, type, evolved, weight, color, image, id } = pokemons;
+
     const evoluirPokemon = () => {
-        console.log("Cliquei no botão de evoluir")
+      setPokemons(Pikachu)
     }
     
   return (
-    <Card color={}>
-        <img src={} alt={`Pokemon`}/>
-        <PokemonName>{}</PokemonName>
-        <PokemonType>{}</PokemonType>
-        <p>{}kg</p>
+    <Card color={color}>
+        <img src={image} alt={`Pokemon`}/>
+        <PokemonName>{name}</PokemonName>
+        <PokemonType>{type}</PokemonType>
+        <p>{weight}kg</p>
+        <div>Evolved: {evolved ? 'yes' : 'not'}</div>
 
         <EvolveButton onClick={() => evoluirPokemon()}>Evoluir!</EvolveButton>
     </Card>

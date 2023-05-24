@@ -15,30 +15,34 @@ const FlexContainer = styled.div`
 `
 function App() {
   
-
   // Para fazer seus próximos pokemons, crie novos estados ultilizando como referência o objeto abaixo:
-  /*{
+ 
+   const[pokemons, setPokemons] = useState({
     name: "Pichu",
     type: "Electric",
     evolved: false,
-    weight: 2,
+    weight: 2.0,
     color: 'yellow',
     image: 'https://archives.bulbagarden.net/media/upload/archive/f/f3/20130810070434%210172Pichu.png',
     id: 0
-  }
-  */
+  })
   
+  const Pikachu = {
+    ...pokemons,
+    name: "Pikachu",
+    evolved: true,
+    weight: 6.0,
+    image: 'https://archives.bulbagarden.net/media/upload/thumb/4/4a/0025Pikachu.png/190px-0025Pikachu.png',
+    id: 1
+  }
 
-  return ( <>
-  <GlobalStyles/>
-    <FlexContainer>
-      {/* Aqui neste componente, passe as props. Lembre-se que também é possivel passar a função de setState via props! */}
-      <PokemonCard/>
-      {/* Crie aqui seus próximos pokemons! */}
-    </FlexContainer>
-  </>
-    
+  return (
+    <>
+      <GlobalStyles />
+      <FlexContainer>
+        <PokemonCard setPokemons={setPokemons} pokemons={pokemons}  Pikachu={Pikachu}/>
+      </FlexContainer>
+    </>
   );
 }
-
-export default App;
+export default App
